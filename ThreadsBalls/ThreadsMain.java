@@ -34,18 +34,27 @@ class pelotaThread implements Runnable{
 		
 		
 		//Repetimos est eproceso 3000veces
-				for (int i = 1; i <3000; i++) {	//La lamina es la creada en el CENTER para 
+		
+		
+		
+				//for (int i = 1; i <3000; i++) {	//La lamina es la creada en el CENTER para 
+					
+				//while(!Thread.interrupted()) {//Mientras no se interrupa se repeti el bucle
+				while(!Thread.currentThread().isInterrupted()) {//Devuelve la REFERNCIA DEL HILO QUE SE ESTA EJECUTANDO	
+					
 					pelota.muevePelota(componente.getBounds());//Cuando choca con los bordes del Marco/Lamina// Le enviamos el MARCO/LAMINA
 					componente.paint(componente.getGraphics());//Retorna el componente dibujado
 					
 					//Sleep para el for y crear un delay
-					
+					/*
 					try {
 						Thread.sleep(4);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+						//e.printStackTrace();
+						System.out.println("Se produzco una interrupcion global");
+						Thread.interrupted();
+					}*/
 					
 				}
 	}

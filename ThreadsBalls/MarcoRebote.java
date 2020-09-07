@@ -36,7 +36,13 @@ public class MarcoRebote extends JFrame {
 			}
 		});
 		
-		
+		ponerBotones(laminaBotones, "Stop ultimo Hilo", new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				detener();
+			}
+		});
 		ponerBotones(laminaBotones, "Salir", new ActionListener() {//Ponemos el metodo Exit
 			
 			@Override
@@ -47,6 +53,11 @@ public class MarcoRebote extends JFrame {
 
 		add(laminaBotones,BorderLayout.SOUTH);	//Ponemos la lamina en la parte sur
 	}
+	
+	
+	
+	
+	
 	//--------------------------------------METODO PARA PONER BOTONES
 		//Container= lamina donde estoy/trabajar
 	public void ponerBotones(Container c,String titulo, ActionListener oyente) {
@@ -56,7 +67,19 @@ public class MarcoRebote extends JFrame {
 		//----Ponemos a la escucha el boton
 		boton.addActionListener(oyente);
 	}
+	
+	
+	
 	//--------------------------------------METODO PARA INICIAR el Juego
+	
+	
+	
+	Thread t;
+	
+	
+	
+	
+	//---------------------
 	public void iniciarJuego() {
 		Pelota pelota= new Pelota();
 		//Agregamos a la lamina  la nueva pelota
@@ -70,8 +93,19 @@ public class MarcoRebote extends JFrame {
 		
 		//--------------Constructores de la cas Thread (Runnable)
 		//Usamos el metodo start de la clase Thread que recibe un parametro del tipo URNNABLE
-		Thread t=new Thread(r);
+		 t=new Thread(r);
 		t.start();
+		
+	}
+	
+	
+	
+	public void detener() {//NECESITAMOS DECLARAR COMO GLOBAL LA VARIABLE T DEL TIPO THREAD
+			//Como el metodo RUN de la clase que implementa el Runnable tiene un Sleep
+			//Lanza una excepcion ya que no se pude Interrupir un bloqueo
+			//En esta excepcion podemos usar el metodo interrumpir parar detenerlo cuando sale la excepcion
+		//t.stop();
+		t.interrupt();//Lanzamos la exepcion y en el catch ponemos la interrupcion
 		
 	}
 	
