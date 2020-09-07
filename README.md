@@ -10,4 +10,4 @@ Runnable r= new miClaseImplementRunable
 4-Creamos la instancia de la clase THREAD pasando como parametros al constructor el OBJETO Runnable anterior
 Thread T= new Thread(r);
 5-Ponemos en marcha el Hilo de ejecucion con el metodo start de la clas Thread
-T.start();
+T.start(); => con start estoy llamando al Metodo RUN()
